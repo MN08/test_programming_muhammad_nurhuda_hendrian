@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_programming_muhammad_nurhuda_hendrian/model/students.dart';
+import 'package:test_programming_muhammad_nurhuda_hendrian/page/add_student.dart';
 import 'package:test_programming_muhammad_nurhuda_hendrian/repository.dart';
 
 void main() {
@@ -19,6 +20,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      routes: {
+        '/home': (context) => MyHomePage(title: 'Student App'),
+        '/add-student': (context) => AddStudent(),
+      },
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Student App'),
     );
   }
@@ -37,14 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Students> listStudent = [];
   Repository repository = Repository();
 
-  getData() async {
-    listStudent = await repository.getStudentData();
-    setState(() {});
-  }
+  // getData() async {
+  //   listStudent = await repository.getStudentData();
+  //   setState(() {});
+  // }
 
   @override
   void initState() {
-    getData();
+    // getData();
     super.initState();
   }
 
@@ -53,6 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () =>
+                Navigator.of(context).popAndPushNamed('/add-student'),
+          )
+        ],
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {

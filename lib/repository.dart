@@ -13,11 +13,10 @@ class Repository {
 
       if (response.statusCode == 200) {
         print(response.body);
-        // Iterable it = jsonDecode(response.body);
-        // List<Students> student = it.map((e) => Students.fromJson(e)).toList();
-        // print(student);
+        Iterable it = jsonDecode(response.body);
+        List<Students> student = it.map((e) => Students.fromJson(e)).toList();
+        print(student);
         return jsonDecode(response.body);
-        ;
       }
     } catch (e) {
       print(e.toString());
@@ -38,6 +37,12 @@ class Repository {
           "photo": photo,
         },
       );
+
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       print(e.toString());
     }
