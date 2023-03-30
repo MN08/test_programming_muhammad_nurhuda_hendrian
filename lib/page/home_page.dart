@@ -37,7 +37,6 @@ class HomePage extends StatelessWidget {
                   return Column(
                     children: [
                       DView.empty(),
-                      DView.empty('Or You are not Following anybody'),
                     ],
                   );
                 }
