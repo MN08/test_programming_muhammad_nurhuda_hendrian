@@ -1,8 +1,7 @@
 import 'city.dart';
-import 'province.dart';
 
-class Students {
-  Students({
+class Student {
+  Student({
     required this.id,
     required this.name,
     required this.gender,
@@ -12,34 +11,28 @@ class Students {
     required this.photo,
     required this.createdAt,
     required this.updatedAt,
-    // required this.provinsi,
-    // required this.kota,
   });
 
   String id;
   String name;
   String gender;
   DateTime birthDate;
-  String province;
-  String city;
+  City province;
+  City city;
   String photo;
   String createdAt;
   String updatedAt;
-  // Province provinsi;
-  // City kota;
 
-  factory Students.fromJson(Map<String, dynamic> json) => Students(
+  factory Student.fromJson(Map<String, dynamic> json) => Student(
         id: json["_id"],
         name: json["name"],
         gender: json["gender"],
         birthDate: DateTime.parse(json["birthDate"]),
-        province: json["province"],
-        city: json["city"],
+        province: City.fromJson(json["province"]),
+        city: City.fromJson(json["city"]),
         photo: json["photo"],
         createdAt: json["created_at"],
         updatedAt: json["updated_at"],
-        // provinsi: Province.fromJson(json["provinsi"]),
-        // kota: City.fromJson(json["city"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,12 +40,8 @@ class Students {
         "name": name,
         "gender": gender,
         "birthDate": birthDate.toIso8601String(),
-        "province": province,
-        "city": city,
         "photo": photo,
         "created_at": createdAt,
         "updated_at": updatedAt,
-        // "provinsi": provinsi.toJson(),
-        // "city": kota.toJson(),
       };
 }

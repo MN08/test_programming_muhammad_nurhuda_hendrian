@@ -1,6 +1,7 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../config/app_color.dart';
 
 class AddStudent extends StatefulWidget {
   const AddStudent({super.key});
@@ -20,7 +21,7 @@ class _AddStudentState extends State<AddStudent> {
   }
 
   int value = 0;
-  Widget CustomRadioButton(String text, int index) {
+  Widget customRadioButton(String text, int index) {
     return OutlinedButton(
       onPressed: () {
         setState(() {
@@ -41,44 +42,44 @@ class _AddStudentState extends State<AddStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tambah Data Siswa"),
+        title: const Text("Tambah Data Siswa"),
       ),
       body: Form(
         key: _formKey,
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
               TextFormField(
-                decoration: new InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Masukan nama lengkap anda",
                   labelText: "Nama Lengkap",
-                  icon: Icon(Icons.people),
+                  icon: const Icon(Icons.people),
                   border: OutlineInputBorder(
-                      borderRadius: new BorderRadius.circular(5.0)),
+                      borderRadius: BorderRadius.circular(5.0)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
                 children: <Widget>[
-                  SizedBox(
+                  const SizedBox(
                     width: 40,
                   ),
-                  CustomRadioButton("Male", 1),
-                  SizedBox(
+                  customRadioButton("Male", 1),
+                  const SizedBox(
                     width: 10,
                   ),
-                  CustomRadioButton("Female", 2),
+                  customRadioButton("Female", 2),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 controller: dateinput, //editing controller of this TextField
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     icon: Icon(Icons.calendar_today), //icon of text field
                     labelText: "Enter Date" //label text of field
                     ),
@@ -190,6 +191,48 @@ class _AddStudentState extends State<AddStudent> {
               ),
               const SizedBox(
                 height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    ElevatedButton.icon(
+                      onPressed: () => {},
+                      icon: const Icon(Icons.image),
+                      label: const Text('Gallery'),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              ConstrainedBox(
+                constraints:
+                    const BoxConstraints.tightFor(width: 310, height: 50),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(AppColor.primary),
+                  ),
+                  child: const Text('Simpan'),
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ConstrainedBox(
+                constraints:
+                    const BoxConstraints.tightFor(width: 310, height: 50),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.red),
+                  ),
+                  child: const Text('cancle'),
+                  onPressed: () {},
+                ),
               ),
             ],
           ),
