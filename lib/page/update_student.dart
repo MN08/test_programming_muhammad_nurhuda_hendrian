@@ -231,7 +231,7 @@ class _UpdateStudentState extends State<UpdateStudent> {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.red),
                   ),
-                  child: const Text('cancle'),
+                  child: const Text('cancel'),
                   onPressed: () {},
                 ),
               ),

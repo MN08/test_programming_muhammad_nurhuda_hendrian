@@ -79,10 +79,12 @@ class _AddStudentState extends State<AddStudent> {
               ),
               TextField(
                 controller: dateinput, //editing controller of this TextField
-                decoration: const InputDecoration(
-                    icon: Icon(Icons.calendar_today), //icon of text field
-                    labelText: "Enter Date" //label text of field
-                    ),
+                decoration: InputDecoration(
+                    hintText: "Tanggal Lahir",
+                    labelText: "Tanggal Lahir",
+                    icon: Icon(Icons.calendar_today),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5))),
                 readOnly:
                     true, //set it true, so that user will not able to edit text
                 onTap: () async {
@@ -120,8 +122,12 @@ class _AddStudentState extends State<AddStudent> {
                 clearOption: true,
                 // enableSearch: true,
                 // dropdownColor: Colors.green,
-                searchDecoration: const InputDecoration(
-                    hintText: "enter your custom hint text here"),
+                searchDecoration: InputDecoration(
+                  hintText: "Masukan Provinsi",
+                  icon: Icon(Icons.map_outlined),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                ),
                 validator: (value) {
                   if (value == null) {
                     return "Required field";
@@ -159,8 +165,12 @@ class _AddStudentState extends State<AddStudent> {
                 clearOption: true,
                 // enableSearch: true,
                 // dropdownColor: Colors.green,
-                searchDecoration: const InputDecoration(
-                    hintText: "enter your custom hint text here"),
+                searchDecoration: InputDecoration(
+                  hintText: "Masukan Kota",
+                  icon: Icon(Icons.map_rounded),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                ),
                 validator: (value) {
                   if (value == null) {
                     return "Required field";
@@ -230,7 +240,7 @@ class _AddStudentState extends State<AddStudent> {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.red),
                   ),
-                  child: const Text('cancle'),
+                  child: const Text('cancel'),
                   onPressed: () {},
                 ),
               ),

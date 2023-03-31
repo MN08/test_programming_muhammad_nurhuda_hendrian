@@ -54,11 +54,11 @@ class StudentSource {
         'city': city,
         'photo': photo
       });
-      DMethod.printTitle('Topic Source - Update Topic', response.body);
+      DMethod.printTitle('Student Source - Update Student', response.body);
       Map responseBody = jsonDecode(response.body);
       return responseBody['success'];
     } catch (e) {
-      DMethod.printTitle('Topic Source - Update Topic', e.toString());
+      DMethod.printTitle('Student Source - Update Student', e.toString());
       return false;
     }
   }
@@ -69,7 +69,7 @@ class StudentSource {
       Response response = await Client().get(Uri.parse(url));
       DMethod.printTitle('Student Source - Get All Student', response.body);
       Map responseBody = jsonDecode(response.body);
-      if (responseBody['success']) {
+      if (response.statusCode == '200') {
         List list = responseBody['data'];
         return list.map((e) {
           Map<String, dynamic> item = Map<String, dynamic>.from(e);
